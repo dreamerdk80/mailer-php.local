@@ -17,7 +17,7 @@ try {
 
             if (!filter_var($data["regEmail"], FILTER_VALIDATE_EMAIL)) {
                 echo json_encode("Введите корректный Email");
-                die();
+                exit;
             }
 
             $firstName = $data["firstName"];
@@ -61,13 +61,13 @@ try {
 
         } else {
             echo json_encode("Введите данные");
-            die();
+            exit;
         }
     } else {
         echo json_encode("Неверный метод");
-        die();
+        exit;
     }
 } catch (PDOException $e) {
     echo json_encode("Ошибка базы данных: " . $e->getMessage());
-    die();
+    exit;
 }
